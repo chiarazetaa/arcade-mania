@@ -1,3 +1,9 @@
+:root {
+    --bg-color: #3535ec;
+    --accent-color: #f70d68;
+    --text-color: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +11,86 @@
 }
 
 body {
-    background-color: #3535ec;
+    background-color: var(--bg-color);
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.container {
+    width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 50px auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 16px;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* BASE STRUCTURE GAME PAGES */
+
+.board {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-area {
+    padding: 12px;
+    position: relative;
+}
+
+.game-info {
+    padding: 12px;
+    width: 240px;;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* ALERT */
+.game-alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-alert-message {
+    font-size: 40px;
+    padding: 20px;
+
+    background-color: var(--accent-color);
 }
