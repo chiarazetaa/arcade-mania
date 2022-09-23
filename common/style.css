@@ -53,7 +53,6 @@ a:hover {
 .board {
     display: flex;
     flex-direction: row;
-
     justify-content: center;
 }
 
@@ -72,8 +71,17 @@ a:hover {
     width: 240px;;
 }
 
-.back {
-    padding: 12px;
+.commands-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.commands {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 h1 {

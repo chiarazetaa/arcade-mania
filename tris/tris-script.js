@@ -35,7 +35,7 @@ for (let i = 0; i < cells.length; i++) {
         // check if someone has won
         let hasWon = checkVictory();
         if (hasWon) {
-            showAlert(sign + ' has won!');
+            showAlert( sign + ' wins!');
         } 
         // nobody has won and it's the last turn: tie
         else if (turn === 9) {
