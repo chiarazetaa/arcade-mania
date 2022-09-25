@@ -1,0 +1,31 @@
+:root {
+    --road-size: 60px;
+}
+
+#grid {
+    width: calc(var(--road-size) * 10);
+    height: 400px;
+    border-bottom: 3px solid white;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+#grid > div {
+    width: var(--road-size);
+    height: var(--road-size);
+}
+
+.duck {
+    background-image: url('./images/duck.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.plant {
+    background-image: url('./images/plant.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
