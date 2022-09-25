@@ -11,8 +11,8 @@
     flex-direction: row;
     flex-wrap: wrap; 
 
-    align-content: space-between;
-    justify-content: space-between;
+    justify-content: space-between; /* main axis */
+    align-content: space-between; /* secondary axis */
 }
 
 .cell {

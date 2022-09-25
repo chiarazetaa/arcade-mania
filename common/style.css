@@ -113,3 +113,12 @@ p {
 
     background-color: var(--accent-color);
 }
+
+button {
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
+    background-color: var(--accent-color);
+    padding: 10px 15px;
+    border: none;
+}
