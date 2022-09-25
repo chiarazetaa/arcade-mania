@@ -18,20 +18,32 @@
     <div class="board">
         <!-- Game area -->
         <div class="game-area">
-            <div id="grid"></div>
+            <div id="grid">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
         </div>
         <!-- Game info -->
         <div class="game-info">
             <h1>Whack a bug</h1>
-            <p>description</p>
+            <p>Hit the bug as many times as you can before time runs out.</p>
+            <h3>Time: <span id="timer-display"></span></h3>
+            <h3>Score: <span id="score-display"></span></h3>
         </div>
     </div>
     <br>
     <!-- Page commands -->
     <div class="commands-container">
         <div class="commands">
-            <a href="./../index.html">&#171; back</a>
-            <a href="./whack-index.html">&#8249; reload</a>
+            <button id="back">&#171; back</button>
+            <button id="restart">restart</button>
         </div>
     </div>
 
