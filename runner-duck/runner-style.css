@@ -21,9 +21,15 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
+    transition: transform 0.3s; 
 }
 
-.plant {
+.duck-jump {
+    transform: translate(0, -120%); /* move UP (y axis) */
+}
+
+.plant:not(.duck) { /* add class plant only if there is no class duck */
     background-image: url('./images/plant.png');
     background-size: contain;
     background-repeat: no-repeat;
