@@ -127,7 +127,6 @@ function moveSpaceship(event) {
 
     // add the spaceship to the new div
     cells[spaceshipIdx].classList.add('spaceship');
-
 }
 
 /** SHOOT */
@@ -154,7 +153,15 @@ function shoot (event) {
             return;
         }
 
-        // check for shoot: laser is on an alien
+        // check for shoot
+        checkBoom();
+        
+        // add the laser
+        cells[laserIdx].classList.add('laser');
+    }
+
+    function checkBoom() {
+        // if laser is on an alien
         if (cells[laserIdx].classList.contains('alien')) {
             clearInterval(laserInterval);
             // remove the alien and the laser from that cell
@@ -173,20 +180,16 @@ function shoot (event) {
             scoreElement.innerText = score;
 
             // check if all aliens have been killed
-            checkForHumanWin();
+            checkForHumansWin();
 
             return;
         }
-        
-
-        // add the laser
-        cells[laserIdx].classList.add('laser');
     }
 
     let laserInterval = setInterval(moveLaser, 200);
 }
 
-function checkForHumanWin() {
+function checkForHumansWin() {
     // all the aliens have been killed
     if (aliensKilled.length === aliens.length) {
         clearInterval(alienMoveInterval);
