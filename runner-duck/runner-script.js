@@ -10,20 +10,24 @@ let plantSpeed = 200;
 let score = 0;
 scoreEl.innerText = score;
 
+addPlant();
+
 function addPlant() {
     // add the plant to the last div 
     let currentPlantIdx = road.length - 1;
     road[currentPlantIdx].classList.add('plant');
 
-    let plantInterval = setInterval(function() {
+    let plantInterval = setInterval(movePlant, plantSpeed);
+
+    function movePlant() {
         score++; 
         scoreEl.innerText = score;
-
+    
         // when the road reach 50 increase speed
         if (score % 50 === 0) {
             plantSpeed = plantSpeed - 20;
         }
-
+    
         // remove the plant from the current div index
         road[currentPlantIdx].classList.remove('plant');
         // decrease the div index value
@@ -35,7 +39,15 @@ function addPlant() {
             addPlant();
             return;
         }
+    
+        // check if crash
+        checkCrash();
+    
+        // add the plant to the next div
+        road[currentPlantIdx].classList.add('plant');
+    }
 
+    function checkCrash() {
         // if there are plant and duck on the same div
         // and the duck is not jumping
         if (
@@ -43,19 +55,14 @@ function addPlant() {
             !road[currentPlantIdx].classList.contains('duck-jump')
         ) {
             // crash: see the plant instead of the duck
-            showAlert('CRASH!');
             clearInterval(plantInterval);
             road[currentPlantIdx].classList.remove('duck');
             road[currentPlantIdx].classList.add('plant');
+            showAlert('CRASH!');
             return;
         }
-
-        // add the plant to the next div
-        road[currentPlantIdx].classList.add('plant');
-    }, plantSpeed);
+    }
 }
-
-addPlant();
 
 // listen when a key is pressed
 document.addEventListener('keydown', jump);
