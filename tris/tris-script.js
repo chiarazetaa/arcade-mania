@@ -2,6 +2,10 @@ const cells = document.querySelectorAll('.cell');
 const cellSigns = [];
 let turn = 0;
 
+let clickSound = new Audio('./audio/beep.mp3');
+let winSound = new Audio('./audio/win.mp3');
+let tieSound = new Audio('./audio/tie.mp3');
+
 for (let i = 0; i < cells.length; i++) {
     const cell = cells[i];
 
@@ -13,6 +17,8 @@ for (let i = 0; i < cells.length; i++) {
             console.log('This cell has already been clicked.');
             return;
         }
+
+        clickSound.play();
 
         // each click is a new turn
         turn++;
@@ -35,10 +41,12 @@ for (let i = 0; i < cells.length; i++) {
         // check if someone has won
         let hasWon = checkVictory();
         if (hasWon) {
+            winSound.play();
             showAlert( sign + ' wins!');
         } 
         // nobody has won and it's the last turn: tie
         else if (turn === 9) {
+            tieSound.play();
             showAlert('Tie.');
         }
     });
