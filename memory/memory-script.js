@@ -8,6 +8,9 @@ const deck = [...cards, ...cards];
 let pick = [];
 let errors = 0;
 
+let pairSound = new Audio('./audio/pair.mp3');
+let endSound = new Audio('./audio/end.mp3');
+
 // randomly generates a positive or negative value to sort the array randomly
 deck.sort(function() {
     return 0.5 - Math.random();
@@ -59,6 +62,7 @@ function checkForMatch() {
     const card2Name = card2.getAttribute('data-name');
 
     if (card1Name === card2Name) {
+        pairSound.play();
         // check if all the cards have been flipped
         checkForWin();
     } else {
@@ -80,6 +84,7 @@ function checkForWin() {
     const flippedCard = document.querySelectorAll('.flipped');
     // all the cards have been flipped
     if (flippedCard.length === deck.length) {
+        endSound.play();
         showAlert('You win!');
     }
 }
