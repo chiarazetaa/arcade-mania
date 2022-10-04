@@ -10,6 +10,9 @@ let plantSpeed = 200;
 let score = 0;
 scoreEl.innerText = score;
 
+let jumpSound = new Audio('./audio/jump.mp3');
+let crashSound = new Audio('./audio/crash.mp3');
+
 addPlant();
 
 function addPlant() {
@@ -54,8 +57,10 @@ function addPlant() {
             currentPlantIdx === duckIdx && 
             !road[currentPlantIdx].classList.contains('duck-jump')
         ) {
-            // crash: see the plant instead of the duck
+            // crash
             clearInterval(plantInterval);
+            crashSound.play();
+            // see the plant instead of the duck
             road[currentPlantIdx].classList.remove('duck');
             road[currentPlantIdx].classList.add('plant');
             showAlert('CRASH!');
@@ -70,6 +75,7 @@ document.addEventListener('keydown', jump);
 function jump(event) {
     // check if I clicked space only once
     if (event.code === 'Space' && !event.repeat) {
+        jumpSound.play();
         duck.classList.add('duck-jump');
         setTimeout(function() {
             duck.classList.remove('duck-jump');
