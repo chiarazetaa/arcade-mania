@@ -8,6 +8,10 @@ let score = 0;
 let scoreElement = document.getElementById('score');
 scoreElement.innerText = score;
 
+let boomSound = new Audio('./audio/boom.mp3');
+let humansWinSound = new Audio('./audio/humansWin.mp3');
+let aliensWinSound = new Audio('./audio/aliensWin.mp3');
+
 // create cells into the grid
 for (let i = 0; i < rxc; i++) {
     const cell = document.createElement('div');
@@ -152,17 +156,18 @@ function shoot (event) {
             clearInterval(laserInterval);
             return;
         }
-
-        // check for shoot
-        checkBoom();
         
         // add the laser
         cells[laserIdx].classList.add('laser');
+
+        // check for shoot
+        checkBoom();
     }
 
     function checkBoom() {
         // if laser is on an alien
         if (cells[laserIdx].classList.contains('alien')) {
+            boomSound.play();
             clearInterval(laserInterval);
             // remove the alien and the laser from that cell
             cells[laserIdx].classList.remove('alien', 'laser');
@@ -192,6 +197,7 @@ function shoot (event) {
 function checkForHumansWin() {
     // all the aliens have been killed
     if (aliensKilled.length === aliens.length) {
+        humansWinSound.play();
         clearInterval(alienMoveInterval);
         showAlert('HUMANS WIN');
     }
@@ -204,6 +210,7 @@ function checkForAliensWin() {
             !aliensKilled.includes(aliens[i]) &&
             aliens[i] >= spaceshipIdx
         ) {
+            aliensWinSound.play();
             clearInterval(alienMoveInterval);
             showAlert('ALIENS WIN');
         }
