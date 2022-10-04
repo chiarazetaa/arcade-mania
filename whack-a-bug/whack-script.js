@@ -13,6 +13,9 @@ const cells = document.querySelectorAll('.cell');
 // initial speed
 let bugSpeed = 800;
 
+let splatSound = new Audio('./audio/splat.mp3');
+let gameOverSound = new Audio('./audio/gameOver.mp3');
+
 function randomBug() {
     // clean all the cells from the class bug
     removeBug();
@@ -44,6 +47,8 @@ for (let i = 0; i < cells.length; i++) {
     cell.addEventListener('click', function() {
         // check if the cell has a bug
         if (cell.classList.contains('bug')) {
+            splatSound.play();
+
             score++;
             scoreDisplay.innerText = score;
 
@@ -67,6 +72,7 @@ function countDown() {
 
     // when the countDown arrives to zero, stop the timer and the bug movement
     if (timeLeft === 0) {
+        gameOverSound.play();
         clearInterval(timer);
         clearInterval(bugMovement);
         removeBug();
